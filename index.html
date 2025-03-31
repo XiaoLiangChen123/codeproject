@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiao Chen - Art Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #b81111;
+            color: #f9f3f3;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Xiao Chen</h1>
+        <p>Welcome to my art portfolio</p>
+    </header>
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <p>Hello! My name is Xiao Chen, and I am an art student passionate about exploring creativity through various mediums. My work reflects my journey, emotions, and inspirations. I strive to create pieces that resonate with others and tell a story.</p>
+        </section>
+        <section>
+            <h2>My School</h2>
+            <p>I am currently studying at Brooklyn College, where I am honing my skills and learning from talented professors and peers. The vibrant art community at Brooklyn College has been instrumental in shaping my artistic vision and pushing me to grow as an artist.</p>
+        </section>
+        <section>
+            <h2>My Process</h2>
+            <p>My creative process begins with observation and inspiration. I often sketch out ideas and experiment with different techniques before committing to a final piece. Whether it's painting, drawing, or digital art, I enjoy exploring new methods to bring my ideas to life.</p>
+        </section>
+        <section>
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <img src="art1.jpg" alt="1. Painting ">
+                <img src="art2.jpg" alt="2. Drawing">
+                <img src="art3.jpg" alt="3. Sculpture">
+                <img src="art4.jpg" alt="4. Photography ">
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2023 Xiao Chen. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script>
+        let stars = [];
+
+        function setup() {
+            createCanvas(windowWidth, 400);
+            noStroke();
+
+            // Generate stars
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: random(width),
+                    y: random(height),
+                    size: random(1, 3)
+                });
+            }
+        }
+
+        function draw() {
+            background(0);
+
+            // Draw stars
+            fill(255);
+            for (let star of stars) {
+                ellipse(star.x, star.y, star.size, star.size);
+            }
+
+            // Moving Circle
+            fill(249, 243, 243);
+            ellipse(frameCount % width, height / 4, 50, 50);
+
+            // Moving Rectangle
+            fill(255, 204, 0);
+            rect((frameCount * 2) % width, height / 2, 60, 40);
+
+            // Moving Triangle
+            fill(0, 204, 255);
+            let x = (frameCount * 3) % width;
+            triangle(x, height - 100, x - 30, height - 50, x + 30, height - 50);
+
+            // Moving Line
+            stroke(255);
+            strokeWeight(2);
+            line((frameCount * 4) % width, 0, (frameCount * 4) % width, height);
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, 400);
+        }
+    </script>
